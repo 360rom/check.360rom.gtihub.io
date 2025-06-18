@@ -1,7 +1,7 @@
 # 360手机刷机服务检测 
 
-* [刷机服务检测 ] check.360os.top
-* [刷机服务检测-备用] check.360rom.gtihub.io
+* [刷机服务检测 ] https://check.360os.top
+* [刷机服务检测-备用] https://check.360rom.gtihub.io
 
 ### 360手机资源站
 
