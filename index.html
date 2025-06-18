@@ -168,22 +168,6 @@
                         检测列表
                     </h2>
 
-                    <!-- IP位置 -->
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                            <i class="fa fa-map-marker text-info mr-2" aria-hidden="true"></i>
-                            正在测试 IP位置
-                        </h3>
-                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                            <div id="ip-location" class="flex items-center">
-                                <div class="animate-pulse-slow mr-3">
-                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
-                                </div>
-                                <span class="text-gray-700">测试中...</span>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- 设备类型 -->
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
@@ -294,7 +278,7 @@
                 // 获取所有检测项元素
                 const checkItems = [
                     'network-status', 'resource-site-status', 'server-status', 'speed-test',
-                    'ip-location', 'device-type', 'system-status', 'system-property', 'remote-service'
+                    'device-type', 'system-status', 'system-property', 'remote-service'
                 ];
                 
                 // 重置每个检测项
@@ -348,7 +332,7 @@
                             <span class="text-danger font-medium">网络异常</span>
                         `;
                     }
-                    updateProgress(12.5);
+                    updateProgress(14.28); // 进度调整为1/7
                 }, 2000);
             }, 500);
             
@@ -400,7 +384,7 @@
                             });
                     })
                     .then(success => {
-                        updateProgress(25);
+                        updateProgress(28.57); // 进度调整为2/7
                     });
             }, 2500);
             
@@ -452,7 +436,7 @@
                             });
                     })
                     .then(success => {
-                        updateProgress(37.5);
+                        updateProgress(42.85); // 进度调整为3/7
                     });
             }, 4500);
             
@@ -481,7 +465,7 @@
                         <span class="text-gray-700">预计网速：${displaySpeed} ${unit}</span>
                     `;
                     
-                    updateProgress(50);
+                    updateProgress(57.14); // 进度调整为4/7
                 };
                 
                 testImage.onerror = function() {
@@ -492,7 +476,7 @@
                         <span class="text-danger font-medium">抱歉，测试失败</span>
                     `;
                     
-                    updateProgress(50);
+                    updateProgress(57.14); // 进度调整为4/7
                 };
                 
                 // 设置超时时间
@@ -504,43 +488,10 @@
                             </div>
                             <span class="text-danger font-medium">抱歉，测试失败</span>
                         `;
-                        updateProgress(50);
+                        updateProgress(57.14); // 进度调整为4/7
                     }
                 }, 8000);
             }, 6500);
-            
-            // IP位置测试
-            setTimeout(() => {
-                const ipLocation = document.getElementById('ip-location');
-                
-                // 尝试从IP定位服务获取位置
-                fetch('https://ipapi.co/json/')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data && data.region) {
-                            ipLocation.innerHTML = `
-                                <div class="text-success mr-3">
-                                    <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
-                                </div>
-                                <span class="text-gray-700">您的位置为：${data.region}</span>
-                            `;
-                        } else {
-                            throw new Error('无法获取位置信息');
-                        }
-                        
-                        updateProgress(62.5);
-                    })
-                    .catch(error => {
-                        ipLocation.innerHTML = `
-                            <div class="text-danger mr-3">
-                                <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
-                            </div>
-                            <span class="text-danger font-medium">抱歉，测试失败</span>
-                        `;
-                        
-                        updateProgress(62.5);
-                    });
-            }, 10000);
             
             // 设备类型测试
             setTimeout(() => {
@@ -575,8 +526,8 @@
                     <span class="text-gray-700">${device}</span>
                 `;
                 
-                updateProgress(75);
-            }, 11000);
+                updateProgress(71.42); // 进度调整为5/7
+            }, 10000);
             
             // 系统情况检测
             setTimeout(() => {
@@ -663,7 +614,7 @@
                     `;
                 }
                 
-                updateProgress(87.5);
+                updateProgress(85.71); // 进度调整为6/7
             }, 12000);
             
             // 系统属性检测
@@ -677,7 +628,7 @@
                     <span class="text-warning font-medium">请留意：您似乎，使用了盗版系统，可能因缺乏相关，带来兼容影响，建议：更换正版或打补丁解决</span>
                 `;
                 
-                updateProgress(93.75);
+                updateProgress(100);
             }, 13000);
             
             // 远程服务检测
@@ -712,7 +663,7 @@
                 // 重置所有检测项
                 const checkItems = [
                     'network-status', 'resource-site-status', 'server-status', 'speed-test',
-                    'ip-location', 'device-type', 'system-status', 'system-property', 'remote-service'
+                    'device-type', 'system-status', 'system-property', 'remote-service'
                 ];
                 
                 checkItems.forEach(itemId => {
@@ -738,7 +689,7 @@
                 setTimeout(() => {
                     refreshBtn.innerHTML = `
                         <i class="fa fa-refresh mr-2" aria-hidden="true"></i>
-                
+                     
                     `;
                     refreshBtn.disabled = false;
                 }, 500);
@@ -746,4 +697,4 @@
         });
     </script>
 </body>
-</html>    
+</html>
